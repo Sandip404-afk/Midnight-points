@@ -1,19 +1,24 @@
-MIDNIGHT — points tracker
+MIDNIGHT 2.0 — Productivity Quests
 
-Included: add points, redeem with confirmation, local saved balance, recent activity, export/restore backup, balance correction, reset, installable PWA/offline app shell.
+FILES
+- index.html: app interface and logic
+- manifest.webmanifest: installable app details
+- sw.js: offline app shell and update cache
+- icons/: app icons
 
-Saving: Points are stored in this browser on this device. They survive closing/reopening and normal phone restarts, but clearing browser/site data or changing phones can remove them. Export a backup regularly in Settings.
+DEPLOYMENT
+Upload/replace the files in the existing GitHub Pages repository. Keep the icons folder and its two PNG files. GitHub Pages should remain configured for main / (root).
 
-Android installation:
-1. Publish this folder to a static HTTPS host such as GitHub Pages.
-2. Open the published HTTPS address in Chrome on Android.
-3. Chrome menu ⋮ > Install app or Add to Home screen.
+DATA & UPGRADE
+The app keeps the existing localStorage key midnight-points-v1, so the current balance and transaction history from MIDNIGHT 1.0 are retained on the same browser/device. Quest progress uses a separate local key. Do not clear browser/site data during the upgrade. Export a backup first from Settings.
 
-GitHub Pages:
-1. Create a public GitHub repository.
-2. Upload the files and the entire icons folder, keeping the folder structure.
-3. Repository Settings > Pages.
-4. Choose Deploy from a branch, select main and /(root), then Save.
-5. Open the Pages URL shown by GitHub.
+POINTS
+- Manual Add Points requires a description.
+- Quest sessions award 1 point for each complete minute of running timer time.
+- Paused time is not counted. A session must run for at least one full minute to earn points.
+- Finish a session to receive its points. Quest sessions are recorded in activity history.
+- Daily random quest is selected from all 10 fixed quests and remains the same for that local calendar day.
+- Streak counts consecutive calendar days with at least one completed quest session.
 
-Privacy: No account, analytics, or server database. Your points remain in local browser storage; do not upload your backup file to the public repository.
+PRIVACY
+All data is stored locally in the browser on this device. It is not synced between devices or shared with other people. Export backups regularly.
