@@ -1,24 +1,25 @@
-MIDNIGHT 2.0 — Productivity Quests
+MIDNIGHT 2.1
 
-FILES
-- index.html: app interface and logic
-- manifest.webmanifest: installable app details
-- sw.js: offline app shell and update cache
-- icons/: app icons
+What's new:
+- Four separate app sections: Home, Quests, Stats, Settings.
+- Quest Board moved to its own page.
+- Required descriptions for both adding and redeeming points.
+- Redemption descriptions are saved in transaction history.
+- One active quest at a time, with an abandon option.
+- Each quest attempt expires 24 hours after it is started. Expired attempts award no points and can be retried.
+- Theme choices: Midnight, Galaxy, Ocean, Forest, and Light.
+- Theme choice is saved on the current device/browser.
+- Existing points and quest storage keys are retained for compatibility.
 
-DEPLOYMENT
-Upload/replace the files in the existing GitHub Pages repository. Keep the icons folder and its two PNG files. GitHub Pages should remain configured for main / (root).
+GitHub Pages update:
+1. Extract this ZIP.
+2. In your existing midnight-points GitHub repository, upload/replace the files in the repository root.
+3. Keep the icons folder and replace its two PNGs only if you intend to update the icons (these are included unchanged here).
+4. Commit the changes to the main branch.
+5. Open the installed app while online and refresh/reopen it after the update deploys. The service worker cache version has been updated to v4.
 
-DATA & UPGRADE
-The app keeps the existing localStorage key midnight-points-v1, so the current balance and transaction history from MIDNIGHT 1.0 are retained on the same browser/device. Quest progress uses a separate local key. Do not clear browser/site data during the upgrade. Export a backup first from Settings.
-
-POINTS
-- Manual Add Points requires a description.
-- Quest sessions award 1 point for each complete minute of running timer time.
-- Paused time is not counted. A session must run for at least one full minute to earn points.
-- Finish a session to receive its points. Quest sessions are recorded in activity history.
-- Daily random quest is selected from all 10 fixed quests and remains the same for that local calendar day.
-- Streak counts consecutive calendar days with at least one completed quest session.
-
-PRIVACY
-All data is stored locally in the browser on this device. It is not synced between devices or shared with other people. Export backups regularly.
+Important:
+- Your existing local points and quest data are stored in this browser on this device. The update keeps the same localStorage keys and does not intentionally reset them.
+- Export a backup from Settings before updating, as a precaution.
+- Each quest attempt has a 24-hour deadline measured from when it is first started. Pausing the productivity timer does not pause the deadline.
+- Only completed full productive minutes are credited when you finish a quest session before expiry.
